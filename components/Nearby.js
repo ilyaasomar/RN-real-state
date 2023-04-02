@@ -1,98 +1,62 @@
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, FlatList } from "react-native";
 import React from "react";
 import { Image } from "react-native";
-import house from "../assets/house.jpg";
-import apartment from "../assets/apartment.jpg";
-import town from "../assets/town.jpg";
-
-import { Colors } from "../colors";
-import { Ionicons } from "@expo/vector-icons";
-import { MaterialCommunityIcons } from "@expo/vector-icons";
-
+import { Colors } from "../constants/colors";
+import Property from "../constants/Property";
+import { Pressable } from "react-native";
+import { useRouter } from "expo-router";
 const Nearby = () => {
+  const router = useRouter();
   return (
     <>
       <View style={styles.hr}></View>
       <View style={styles.wrapper}>
         <Text style={styles.title}>Nearby</Text>
         {/* propery one */}
-        <View style={styles.container}>
-          {/* image */}
-          <Image source={house} style={styles.image} resizeMode="cover" />
-          {/* text view */}
-          <View style={styles.subContainer}>
-            <View style={styles.subtitiles}>
-              <Text style={styles.house}>House</Text>
-              <Text style={styles.desc}>79 Pack Drive East Drive</Text>
-              <Text style={styles.address}>Flushing, New York 11367</Text>
-            </View>
-            {/* icons */}
-            <View style={styles.subFooter}>
-              <View style={styles.icon}>
+        <FlatList
+          data={Property}
+          renderItem={({ item }) => (
+            <Pressable
+              onPress={() => router.push("/houseDetails")}
+              style={styles.container}
+            >
+              {/* image */}
+              <Image
+                source={item.image}
+                style={styles.image}
+                resizeMode="cover"
+              />
+              {/* text view */}
+              <View style={styles.subContainer}>
+                <View style={styles.subtitiles}>
+                  <Text style={styles.house}>{item.title}</Text>
+                  <Text style={styles.desc}>{item.description}</Text>
+                  <Text style={styles.address}>{item.address}</Text>
+                </View>
                 {/* icons */}
-                <Ionicons name="bed" size={24} color={Colors.secondary} />
-                <MaterialCommunityIcons
-                  name="shower"
-                  size={24}
-                  color={Colors.secondary}
-                />
+                <View style={styles.subFooter}>
+                  <View>
+                    <View style={styles.icon}>
+                      {/* icons */}
+                      <View style={styles.innerIcon}>
+                        <item.iconOne />
+                        <Text style={styles.numbers}>{item.noBed}</Text>
+                      </View>
+                      <View style={styles.innerIcon}>
+                        <item.iconTwo />
+                        <Text style={styles.numbers}>{item.noShower}</Text>
+                      </View>
+                    </View>
+                  </View>
+                  <View style={{ marginLeft: 50 }}>
+                    <Text style={styles.price}>{item.price}</Text>
+                  </View>
+                </View>
               </View>
-              <Text style={styles.price}>$2,969/m</Text>
-            </View>
-          </View>
-        </View>
+            </Pressable>
+          )}
+        />
         {/* propery two */}
-        <View style={styles.container}>
-          {/* image */}
-          <Image source={apartment} style={styles.image} resizeMode="cover" />
-          {/* text view */}
-          <View style={styles.subContainer}>
-            <View style={styles.subtitiles}>
-              <Text style={styles.house}>House</Text>
-              <Text style={styles.desc}>79 Pack Drive East Drive</Text>
-              <Text style={styles.address}>Flushing, New York 11367</Text>
-            </View>
-            {/* icons */}
-            <View style={styles.subFooter}>
-              <View style={styles.icon}>
-                {/* icons */}
-                <Ionicons name="bed" size={24} color={Colors.secondary} />
-                <MaterialCommunityIcons
-                  name="shower"
-                  size={24}
-                  color={Colors.secondary}
-                />
-              </View>
-              <Text style={styles.price}>$2,969/m</Text>
-            </View>
-          </View>
-        </View>
-        {/* propery three */}
-        <View style={styles.container}>
-          {/* image */}
-          <Image source={town} style={styles.image} resizeMode="cover" />
-          {/* text view */}
-          <View style={styles.subContainer}>
-            <View style={styles.subtitiles}>
-              <Text style={styles.house}>House</Text>
-              <Text style={styles.desc}>79 Pack Drive East Drive</Text>
-              <Text style={styles.address}>Flushing, New York 11367</Text>
-            </View>
-            {/* icons */}
-            <View style={styles.subFooter}>
-              <View style={styles.icon}>
-                {/* icons */}
-                <Ionicons name="bed" size={24} color={Colors.secondary} />
-                <MaterialCommunityIcons
-                  name="shower"
-                  size={24}
-                  color={Colors.secondary}
-                />
-              </View>
-              <Text style={styles.price}>$2,969/m</Text>
-            </View>
-          </View>
-        </View>
       </View>
     </>
   );
@@ -152,6 +116,9 @@ const styles = StyleSheet.create({
     fontSize: 17,
   },
   subFooter: {
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "space-between",
     marginTop: 20,
     flexDirection: "row",
     marginLeft: 20,
@@ -160,9 +127,18 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     gap: 20,
   },
-  price: {
-    marginLeft: "auto",
+  innerIcon: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 5,
+  },
+  numbers: {
+    fontSize: 16,
     fontWeight: "bold",
+  },
+  price: {
+    // marginLeft: "auto",
+    fontWeight: 400,
     fontSize: 20,
   },
 });

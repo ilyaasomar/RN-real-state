@@ -2,7 +2,7 @@ import { View, Text } from "react-native";
 import React from "react";
 import { FontAwesome } from "@expo/vector-icons";
 import { Fontisto } from "@expo/vector-icons";
-import { Colors } from "../colors";
+import { Colors } from "./colors";
 import { Entypo } from "@expo/vector-icons";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 export default [

@@ -1,7 +1,8 @@
 import { View, Text, SafeAreaView } from "react-native";
 import React from "react";
 import { StyleSheet } from "react-native";
-import { Colors } from "../colors";
+import { Colors } from "../constants/colors";
+
 import Header from "../components/Header";
 import Search from "../components/Search";
 import Menus from "../components/Menus";
@@ -25,5 +26,6 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
     height: "100%",
   },
+  
 });
 export default home;

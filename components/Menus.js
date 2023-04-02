@@ -10,7 +10,7 @@ import { MaterialCommunityIcons, MaterialIcons } from "@expo/vector-icons";
 
 import React from "react";
 import { Entypo } from "@expo/vector-icons";
-import MenuLinks from "./MenuLinks";
+import MenuLinks from "../constants/MenuLinks";
 const Menus = () => {
   return (
     <>

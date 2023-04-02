@@ -1,7 +1,7 @@
 import React from "react";
 import { Image, TouchableOpacity } from "react-native";
 import { StyleSheet, Text, View } from "react-native";
-import { Colors } from "../colors";
+import { Colors } from "../constants/colors";
 import airbnb from "../assets/airbnb.png";
 import { useRouter } from "expo-router";
 const Login = () => {
@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     padding: 24,
-    backgroundColor: Colors.primary
+    backgroundColor: Colors.primary,
   },
   image: {
     width: "100%",
@@ -43,17 +43,17 @@ const styles = StyleSheet.create({
     maxHeight: "100%",
     // backgroundColor: "green",
     padding: 50,
-    marginTop: 200
+    marginTop: 200,
   },
   footer: {
     marginTop: "auto",
-    marginBottom: 50
+    marginBottom: 50,
   },
   title: {
     fontSize: 18,
     fontWeight: "normal",
     textAlign: "center",
-    color: "gray"
+    color: "gray",
   },
 
   button: {
@@ -61,25 +61,25 @@ const styles = StyleSheet.create({
     marginTop: 30,
     paddingTop: 20,
     paddingBottom: 20,
-    borderRadius: 10
+    borderRadius: 10,
   },
   buttonText: {
     color: "white",
     fontWeight: "bold",
     fontSize: 18,
-    textAlign: "center"
+    textAlign: "center",
   },
   accountText: {
     flexDirection: "row",
     marginTop: 30,
-    justifyContent: "center"
+    justifyContent: "center",
   },
   haveAcc: {
-    color: "gray"
+    color: "gray",
   },
   login: {
     color: Colors.secondary,
-    fontWeight: "bold"
-  }
+    fontWeight: "bold",
+  },
 });
 export default Login;
