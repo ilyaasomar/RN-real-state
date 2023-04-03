@@ -7,6 +7,8 @@ import { MaterialIcons } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
 import { Ionicons } from "@expo/vector-icons";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
+import MonthlyCost from "./MonthlyCost";
+import Agent from "./Agent";
 
 const HouseDetails = () => {
   const router = useRouter();
@@ -82,6 +84,9 @@ const HouseDetails = () => {
           </View>
           <View style={styles.hr}></View>
         </View>
+        {/* monthly Cost */}
+        <MonthlyCost />
+        <Agent />
       </View>
     </>
   );
